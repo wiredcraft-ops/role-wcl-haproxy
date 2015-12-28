@@ -14,8 +14,8 @@ haproxy_global:
   spread_checks: 3
   stats:
     - socket /tmp/haproxy level admin
-    - socket /tmp/haproxy.zabbix level user user zabbix
     - maxconn 20
+    # - socket /tmp/haproxy.zabbix level user user zabbix
 
 
 haproxy_default:
