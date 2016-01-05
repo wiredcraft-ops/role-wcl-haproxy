@@ -7,13 +7,13 @@ haproxy_global:
       facility: local0
       level: info
   description: "HAProxy Daemon"
-  maxconn: 4096
+  maxconn: 65536
   user: haproxy
   group: haproxy
   daemon: true
   spread_checks: 3
   stats:
-    - socket /tmp/haproxy level admin
+    - socket /tmp/haproxy level admin 
     - maxconn 20
     # - socket /tmp/haproxy.zabbix level user user zabbix
 
