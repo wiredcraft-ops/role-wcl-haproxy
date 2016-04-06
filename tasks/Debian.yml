@@ -5,8 +5,18 @@
   tags:
    - haproxy_install
 
-- name: install haproxy
-  apt: pkg=haproxy state=installed
+# http://haproxy.debian.net/#?distribution=Ubuntu&release=trusty&version=1.6
+- name: Install haproxy repository
+  apt_repository:
+    repo='ppa:vbernat/haproxy-1.6'
+  when: ansible_distribution == "Ubuntu"
   tags:
    - haproxy_install
 
+- name: install haproxy
+  apt:
+    pkg=haproxy
+    state=installed
+    update_cache=yes
+  tags:
+   - haproxy_install
