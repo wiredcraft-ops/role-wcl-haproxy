@@ -37,6 +37,13 @@
      haproxy_backends:
      - name: webserver-ext
        balance: roundrobin
+       # httpchk option can be used with http-check to do
+       # health check (with http requests) to the backend server
+       # in this case, the returned result can not be 5xx error or
+       # this backend will be temporarily droped from sending requests to.
+       options:
+        - httpchk OPTIONS * HTTP/1.1\r\nHost:\ example.com
+       http_check: 'expect ! rstatus ^5'
        servers:
         - name: backend1
           ip: 192.168.0.100
