@@ -18,6 +18,10 @@ To make this Role more reusable, it contains 3 different tags :
  - haproxy_configure : task which create the /etc/haproxy/haproxy.cfg
  - haproxy_service : tasks used to start/reload the service when there is a modification
 
+Change made in Jan. 11, 2018
+- support `options` in `haproxy_backends`
+- support `http-check` in `haproxy_backends`
+
 Example Playbook
 -------------------------
 

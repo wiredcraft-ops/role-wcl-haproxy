@@ -41,6 +41,10 @@
        # health check (with http requests) to the backend server
        # in this case, the returned result can not be 5xx error or
        # this backend will be temporarily droped from sending requests to.
+       # Please refer to:
+       # https://cbonte.github.io/haproxy-dconv/1.8/configuration.html#4.2-option%20httpchk
+       # https://cbonte.github.io/haproxy-dconv/1.8/configuration.html#http-check%20expect
+       # https://www.haproxy.com/documentation/aloha/7-0/traffic-management/lb-layer7/health-checks/
        options:
         - httpchk OPTIONS * HTTP/1.1\r\nHost:\ example.com
        http_check: 'expect ! rstatus ^5'
