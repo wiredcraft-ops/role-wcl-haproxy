@@ -70,6 +70,9 @@
 #      mode: {value}                     (values: tcp|http|health)
 #      balance: {value}                  (values: roundrobin,leastconn,source,uri,url_param,hdr,...)
 #      cookie: {value}
+#      options:
+#          - {option}                    (values: httpchk,...)
+#      http_check: {value}               (values: expect ! rstatus ^5)
 #      servers:
 #          - name: {value}
 #            ip: {value}
