@@ -10,11 +10,11 @@
   when: ansible_os_family == 'Debian'
 
 - name: start haproxy
-  service: name=haproxy state=running
+  service: name=haproxy state=started
   tags:
    - haproxy_service
 
-- name: enable haproxy
+- name: copy haproxy default config
   copy: src='default.cfg' dest='/etc/default/haproxy'
   tags:
    - haproxy_install
@@ -24,3 +24,9 @@
   notify: reload haproxy
   tags:
    - haproxy_configure
+
+- name: enable haproxy
+  systemd:
+    name: haproxy
+    state: started
+    enabled: true
